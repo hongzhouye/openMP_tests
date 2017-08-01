@@ -1,11 +1,14 @@
 CXX=g++-6
-CXXFLAGS=-Wall
+CXXFLAGS=-std=c++11 -Wall -fopenmp
+LDFLAGS=-Wl,-rpath,$(CONDA_PREFIX)/lib
 
-PROGS=prog-1
+%.o: %.cpp
+	$(CXX) -c -o $@ $^ $(CXXFLAGS)
 
-all: $(PROGS)
+%.x: %.o
+	$(CXX) -o $@ $^ $(LDFLAGS) $(CXXFLAGS)
 
 clean:
-	rm -f *.o $(PROGS)
+	rm -f *.o *.x
 
-.PHONY: all clean
+#.PHONY: all clean
