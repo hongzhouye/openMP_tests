@@ -1,5 +1,5 @@
-CXX=g++-6
-CXXFLAGS=-std=c++11 -Wall -fopenmp
+CXX=icpc
+CXXFLAGS=-std=c++11 -Wall -qopenmp #-O3
 LDFLAGS=-Wl,-rpath,$(CONDA_PREFIX)/lib
 
 %.o: %.cpp
